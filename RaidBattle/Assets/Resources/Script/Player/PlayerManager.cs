@@ -55,12 +55,28 @@ public class PlayerManager : MonoBehaviour {
 				{
 					switch (code)
 					{
-						case KeyCode.V:                     
-						case KeyCode.X:
-						case KeyCode.C:
-                     	case KeyCode.B:
+						case KeyCode.V:
 							ChangeStatus(EPlayerState.Atk, code);
-							StartCoroutine(EffectPlayer.Instance.ShotMagicEffect("ElekiBall2", target.transform.position));
+							StartCoroutine(EffectPlayer.Instance.ShotMagicEffect("EnergeBlast", target.transform.position));
+                            break;
+
+						case KeyCode.X:
+							ChangeStatus(EPlayerState.Atk, code);
+							StartCoroutine(EffectPlayer.Instance.ShotMagicEffect("FireShot", target.transform.position));
+                            break;
+
+						case KeyCode.C:
+							ChangeStatus(EPlayerState.Atk, code);
+							StartCoroutine(EffectPlayer.Instance.ShotMagicEffect("FrameBall", target.transform.position));
+                            break;
+
+						case KeyCode.B:
+							ChangeStatus(EPlayerState.Atk, code);
+							StartCoroutine(EffectPlayer.Instance.ShotMagicEffect("GreenCore", target.transform.position));
+							break;
+
+						case KeyCode.Space:
+							ChangeStatus(EPlayerState.Jump);
 							break;
 
 						default:
@@ -69,12 +85,15 @@ public class PlayerManager : MonoBehaviour {
 
 					}
 				}
+                
 			}
 		}
 		else
 		{
 			ChangeStatus(EPlayerState.Idle);
 		}
+
+
 	}
 
 	private void ChangeStatus(EPlayerState ePlayerState, KeyCode keyCode = KeyCode.JoystickButton9)
@@ -103,6 +122,10 @@ public class PlayerManager : MonoBehaviour {
 
 				case EPlayerState.Die:
 
+					break;
+
+				case EPlayerState.Jump:
+					playerStatus = new PlayerJamp(gameObject);
 					break;
                    
 				default:

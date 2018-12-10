@@ -26,11 +26,11 @@ public class PlayerCamera : MonoBehaviour
 		transform.RotateAround(targetPos, Vector3.up, mouseInputX * Time.deltaTime * 200f);
 
 		// カメラがプレイヤーの真上や真下にあるときにそれ以上回転させないようにする
-		if (transform.forward.y > 0.7f && -mouseInputY < 0)
+		if (transform.forward.y > 0.6f && -mouseInputY < 0)
 		{
 			mouseInputY = 0;
 		}
-		if (transform.forward.y < -0.7f && -mouseInputY > 0)
+		if (transform.forward.y < -0.6f && -mouseInputY > 0)
 		{
 			mouseInputY = 0;
 		}

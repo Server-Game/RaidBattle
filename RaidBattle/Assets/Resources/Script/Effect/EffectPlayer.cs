@@ -94,6 +94,7 @@ public class EffectPlayer : MonoBehaviour
 		Destroy(effectObject = (GameObject)Instantiate(effectInfo.effectObject, vector3, Quaternion.identity), destroyTime);
 
 		effectObject.name = effectClips[effectName].effectName;
+		effectObject.tag = "Effect";
 
 	}
 
@@ -137,13 +138,14 @@ public class EffectPlayer : MonoBehaviour
 		Destroy(effectObject = (GameObject)Instantiate(effectInfo.effectObject, vector3, Quaternion.identity), 4.0f);
 
 		effectObject.name = effectClips[effectName].effectName;
+		effectObject.tag = "Effect";
 
 		Vector3 Force = Camera.main.transform.forward;
 
 		while (effectObject != null)
 		{
-
-			effectObject.GetComponent<Rigidbody>().AddForce(Force * 10.0f); 
+            
+			effectObject.GetComponent<Rigidbody>().AddForce(Force * 20.0f); 
 
 			yield return new WaitForEndOfFrame();
 		}
@@ -173,6 +175,7 @@ public class EffectPlayer : MonoBehaviour
 		effectObject = (GameObject)Instantiate(effectInfo.effectObject, me, Quaternion.identity);
 
 		effectObject.name = effectClips[effectName].effectName;
+		effectObject.tag = "Effect";
 
 		float timeStep = 0;
 

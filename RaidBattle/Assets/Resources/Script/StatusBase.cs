@@ -28,10 +28,18 @@ namespace PlayerState
 		{
 			get { return ePlayerState; }
 		}
-        
+
+		protected bool isAnimation;
+
+		public bool IsAnimation
+		{
+			private set;
+			get;
+		}
 
 		protected string animatorName;
 
+		public StatusBase() { }
 
 		public StatusBase(GameObject @object)
 		{
@@ -49,9 +57,7 @@ namespace PlayerState
 		{
 			animatorName = "PlayerState";
             player = GameObject.Find("Player");
-            animator = player.GetComponent<Animator>();
-			ePlayerState = EPlayerState.Idle;
-			animator.SetInteger(animatorName, (int)ePlayerState);
+            animator = player.GetComponent<Animator>();          
 			moveSpeed = 0;
 		}
              
@@ -67,5 +73,6 @@ public enum EPlayerState
     Hit,
     Run,
     Die,
-    Atk
+    Atk,
+    Jump
 }

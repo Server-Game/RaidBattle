@@ -14,6 +14,7 @@ public class PlayerIdle : StatusBase {
         ePlayerState = EPlayerState.Idle;
         animator.SetInteger(animatorName, (int)ePlayerState);
         moveSpeed = 0;
+		Debug.Log(ePlayerState);
     }
 
     public override void OnUpdate()
